@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;//←これが重要!
 use App\Company;
 use App\User;
 use App\Company_User;
@@ -48,7 +49,8 @@ class CompaniesController extends Controller
         $company=Company::findOrFail($request->input('company_id'));
         $user=User::findOrFail(Auth::id());
         $company->users()->attach($user->id);
-        return redirect('/companies/{{$company->id}}')->with('success', 'Successfully applyed');
+        //return redirect()->back();
+        return redirect('/companies/' . $company->id)->with('success', 'Successfully applyed');
 
     }
 
@@ -65,6 +67,13 @@ class CompaniesController extends Controller
 
     }
 
+
+    public function admin($id)
+    {
+        $company=Company::find($id);
+        return view('companies.admin')->with('company', $company);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -74,6 +83,7 @@ class CompaniesController extends Controller
     public function edit($id)
     {
         $company=Company::find($id);
+        $users=Auth::user();
         return view('companies.edit')->with('company', $company);
     }
 
