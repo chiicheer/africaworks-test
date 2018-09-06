@@ -137,7 +137,7 @@
           @if($i == $colcount)
             <div class="col-md-4">
               <div class="card mb-3">
-                <img class="card-img-top" src="{{$country->cover_image}}" alt="Card image cap">
+                <img class="card-img-top" src= "/storage/cover_images/{{$country->cover_image}}" alt="Card image cap">
 
                 <a href="{{ url('countries/'.$country->id)}}">
                 <br>
@@ -151,7 +151,7 @@
           @else
             <div class="col-md-4">
               <div class="card mb-3">
-                <img class="card-img-top" src="{{$country->cover_image}}" alt="Card image cap">
+                <img class="card-img-top" src="/storage/cover_images/{{$country->cover_image}}" alt="Card image cap">
 
                 <a href="{{ url('countries/'.$country->id)}}">
                 <a href="/countries/{{$country->id}}">

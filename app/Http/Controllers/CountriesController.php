@@ -41,7 +41,7 @@ class CountriesController extends Controller
         $this->validate($request,
         [
             'name'=> 'required',
-            'cover_image'=>'image|max:1999',
+            'cover_image'=>'image|nullable|max:1999',
             'description'=> 'required',
         ]);
 
@@ -51,19 +51,20 @@ class CountriesController extends Controller
 
             $filename=pathinfo($filenameWithExt, PATHINFO_FILENAME);
 
-            $extension=$request->file('cover_image')->getClientOriginalName();
+            $extension=$request->file('cover_image')->getClientOriginalExtension();
 
-            $filenameToStore=$filename. '_'. time(). '.'. $extension;
+            $fileNameToStore=$filename. '_'. time(). '.'. $extension;
 
-            $path=$request->file('cover_image')->storeAs('public/cover_images', $filenameToStore);
+            $path=$request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+
 
             $country= new Country;
             $country->name=$request->input('name');
-            $country->cover_image=$filenameToStore;
             $country->description=$request->input('description');
+            $country->cover_image=$fileNameToStore;
             $country->save();
 
-            return redirect('countries.index')->with('success', '正常に作成されました');
+            return redirect('/countries')->with('success', '正常に作成されました');
     }
 
     /**

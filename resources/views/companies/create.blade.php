@@ -7,8 +7,7 @@
    <br>
    <h3>《求人内容》</h3>
 
-   {!! Form::open(['url'=>'/companies/{{$company->id}}}', 'method'=>'POST', 
-       'enctype'=> 'multipart/form-data']) !!}
+   {!! Form::open(['route' => 'companies.store', 'method'=>'POST', 'enctype'=> 'multipart/form-data']) !!}
       <br>
       <div class="Form-group">
          {{Form::Label('country_id','国種別')}}
@@ -139,6 +138,6 @@
 
   @endif
 
-  <a class="btn btn-success float-right" href="/countries/{{$country->id}}">Back</a>
+  <a class="btn btn-success float-right" href="/countries">Back</a>
 
 @endsection

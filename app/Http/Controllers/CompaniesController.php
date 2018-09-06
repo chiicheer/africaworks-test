@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;//←これが重要!
 use App\Company;
 use App\User;
+use App\Country;
 
 
 class CompaniesController extends Controller
@@ -45,19 +46,13 @@ class CompaniesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        $company=Company::findOrFail($request->input('company_id'));
-        $user=User::findOrFail(Auth::id());
-        $company->users()->attach($user->id);
-        return redirect('/companies/' . $company->id)->with('success', '応募が完了しました。    担当者からの連絡をお待ち下さい。');
-
-
+    {
         $this-> validate($request,
             [
                 'country_id'=> 'required',
-                'cover_image1'=> 'image|nullable|max:1999'
-                'cover_image2'=> 'image|nullable|max:1999'
-                'cover_image3'=> 'image|nullable|max:1999'
+                'cover_image1'=> 'image|nullable|max:1999',
+                'cover_image2'=> 'image|nullable|max:1999',
+                'cover_image3'=> 'image|nullable|max:1999',
                 'title'=> 'required',
                 'description'=> 'required',
                 'job_content'=> 'required',
@@ -118,7 +113,14 @@ class CompaniesController extends Controller
         $company->company_type= $request-> input('company_type');
         $company->company_content= $request-> input('company_content');
         $company-> save();
-        return redirect('/companies/{{$company->id}}')->with('success', '正常に作成されました');
+        return redirect('/countries/' . $company->country_id)->with('success', '正常に作成されました');
+
+
+        $company=Company::findOrFail($request->input('company_id'));
+        $user=User::findOrFail(Auth::id());
+        $company->users()->attach($user->id);
+        return redirect('/companies/' . $company->id)->with('success', '応募が完了しました。    担当者からの連絡をお待ち下さい。');
+
 
     }
 

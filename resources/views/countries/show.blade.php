@@ -25,7 +25,7 @@
         @if($i == $colcount)
           <div class="col-md-4">
             <div class="card mb-3 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="{{$company->cover_image1}}" alt="Card image cap">
+                <img class="card-img-top" src="/storage/cover_images/{{$country->cover_image1}}" alt="Card image cap">
 
                 <div class="card-body">
                   <a href="{{ url('companies/'. $company->id)}}"><h5 class="card-title">{{$company->title}}</h5></a>
@@ -43,7 +43,7 @@
         @else
           <div class="col-md-4">
             <div class="card mb-3 shadow-sm" style="width: 18rem;">
-              <img class="card-img-top" src="{{$company->cover_image1}}" alt="Card image cap">
+              <img class="card-img-top" src="/storage/cover_images/{{$country->cover_image1}}" alt="Card image cap">
 
               <div class="card-body">
                 <a href="{{ url('companies/'. $company->id)}}"><h5 class="card-title">{{$company->title}}</h5></a>
@@ -77,7 +77,8 @@
 <br>
 
   @if(Auth::user()->id == 1)
-  <a class="btn btn-success float-right" href="/countries/{id}/edit">編集</a>
+  <a class="btn btn-success float-right" href="/countries/{{$country->id}}/edit">編集</a>
+  <a class="btn btn-success float-right" href="/companies/create">仕事作成</a>
   @endif
 
 <a class="btn btn-success float-right" href="/countries" style="margin-right: 10%">Back</a>

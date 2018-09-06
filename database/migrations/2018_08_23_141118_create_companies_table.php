@@ -32,6 +32,7 @@ class CreateCompaniesTable extends Migration
             $table->text('apply_way');
             $table->string('company_name');
             $table->string('company_place');
+            $table->string('foundation');
             $table->string('employee');
             $table->string('company_type');
             $table->text('company_content');

@@ -16,7 +16,7 @@
       <br>
 
        <div class="from-group">
-         {{Form::file('cover_image1')}}
+         {{Form::file('cover_image')}}
       </div>
       <br>
 

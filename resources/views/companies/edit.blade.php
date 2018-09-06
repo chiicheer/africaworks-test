@@ -13,7 +13,7 @@
 <br>
 <h3>《求人内容》</h3>
 
-{!! Form::open(['url'=>'/companies/{{$company->id}}', 'method'=>'POST', 'enctype'=> 'multipart/form-data']) !!}
+{!! Form::open(['url'=>'/countries/{{$company->id}}', 'method'=>'POST', 'enctype'=> 'multipart/form-data']) !!}
    <br>
     <div class="from-group">
       {{Form::file('cover_image')}}
