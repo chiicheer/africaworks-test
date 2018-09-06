@@ -49,7 +49,7 @@
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('一般登録') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('会員登録') }}</a>
                             </li>
                             
                         @else
@@ -77,6 +77,7 @@
         </nav>
 
         <main class="py-4">
+            @include('inc.messages')
             @yield('content')
         </main>
     </div>

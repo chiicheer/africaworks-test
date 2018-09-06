@@ -43,39 +43,38 @@
 	</div>
 
 
+@if(Auth::user())
 
-@foreach($company->users as $user)
-{{ Auth::user()->id }}:{{$company->id}}
-@endforeach<!--company__usersテーブルから値を取ってきてる-->
+	<?php
+		$role=Auth::user()->role;
+		$users=Auth::user();
+	?>
 
-{{$company->id}}
-{{Auth::user()->id}}<!--companyの idと userの id をこれで表示させられる-->
+	@if($role == $company->id)
+	<a class="btn btn-success float-right" href="/companies/{{$company->id}}/edit" style="margin-right: 10%">編集</a>
+	@endif
 
-<?php
-	$role=Auth::user()->role;
-	$users=Auth::user();
-?>
+	@if($role == null)
+	<h1>{{ Auth::user()->name }}</h1>
+	{{ Auth::user()->id }}
+	
+	{!!Form::open(['route' => 'companies.store', 'method'=>'POST'])!!}
 
-@if($role == "user")
-<h1>{{ Auth::user()->name }}</h1>
-{{ Auth::user()->id }}
-
-
-
-{!!Form::open(['route' => 'companies.store', 'method'=>'POST'])!!}
-
-{{ csrf_field() }}
+	{{ csrf_field() }}
 
 
-{{Form::hidden('company_id', $company->id)}}
-{{Form::hidden('user_id', 'Auth::user()->id')}}
+	{{Form::hidden('company_id', $company->id)}}
+	{{Form::hidden('user_id', 'Auth::user()->id')}}
 
-{{Form::submit('apply',['class'=>'btn btn-danger'])}}
+	{{Form::submit('apply',['class'=>'btn btn-danger'])}}
 
-{!! Form::close() !!}
+	{!! Form::close() !!}
+	@endif
+
+@endif
 
 <a class="btn btn-success float-right" href="/countries/{{$company->country_id}}" style="margin-right: 10%">Back</a>
-@endif
+
 
 </main>
 

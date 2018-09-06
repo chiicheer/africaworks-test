@@ -25,38 +25,36 @@
         @if($i == $colcount)
           <div class="col-md-4">
             <div class="card mb-3 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQyMGg1988pPi2NmtJ2zHBKx5ZMfvIzcaEotYBcpjJT4XNotYyBw" alt="Card image cap">
+                <img class="card-img-top" src="{{$company->cover_image1}}" alt="Card image cap">
 
                 <div class="card-body">
-                  <a href="/companies/{{$company->id}}"></a>
                   <a href="{{ url('companies/'. $company->id)}}"><h5 class="card-title">{{$company->title}}</h5></a>
-                  <p class="card-text">ここに description</p>
+                  <p class="card-text">{{$company->description}}</p>
                 </div>
 
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">ここに勤務地</li>
-                  <li class="list-group-item">ここに給料</li>
-                  <li class="list-group-item">ここに勤務時間</li>
-                  <li class="list-group-item">その他</li>
+                  <li class="list-group-item">{{$company->place}}</li>
+                  <li class="list-group-item">{{$company->salary}}</li>
+                  <li class="list-group-item">{{$company->time}}</li>
+                  <li class="list-group-item">{{$company->relate}}</li>
                 </ul>
             </div>
           </div>
         @else
           <div class="col-md-4">
             <div class="card mb-3 shadow-sm" style="width: 18rem;">
-              <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQyMGg1988pPi2NmtJ2zHBKx5ZMfvIzcaEotYBcpjJT4XNotYyBw" alt="Card image cap">
+              <img class="card-img-top" src="{{$company->cover_image1}}" alt="Card image cap">
 
               <div class="card-body">
-                <a href="/companies/{{$company->id}}"></a>
                 <a href="{{ url('companies/'. $company->id)}}"><h5 class="card-title">{{$company->title}}</h5></a>
-                <p class="card-text">ここに description</p>
+                <p class="card-text">{{$company->description}}</p>
               </div>
 
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">ここに勤務地</li>
-                <li class="list-group-item">ここに給料</li>
-                <li class="list-group-item">ここに勤務時間</li>
-                <li class="list-group-item">その他</li>
+                <li class="list-group-item">{{$company->place}}</li>
+                <li class="list-group-item">{{$company->salary}}</li>
+                <li class="list-group-item">{{$company->time}}</li>
+                <li class="list-group-item">{{$company->relate}}</li>
               </ul>
             </div>
         @endif
@@ -77,6 +75,11 @@
     <p>!!!No Jobs To Display!!!</p>
   @endif
 <br>
+
+  @if(Auth::user()->id == 1)
+  <a class="btn btn-success float-right" href="/countries/{id}/edit">編集</a>
+  @endif
+
 <a class="btn btn-success float-right" href="/countries" style="margin-right: 10%">Back</a>
 <br>
 @endsection

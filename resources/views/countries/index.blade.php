@@ -92,14 +92,33 @@
 
         @if(!Auth::user())
         <a href="/login" class="btn btn-primary my-2">ログイン</a>
+
+        <a href="/register" class="btn btn-info my-2">会員登録</a>
         @endif
 
         @if(Auth::user())
-        <a href="/users.show" class="btn btn-primary my-2">マイページ</a>
+        <?php
+          $role=Auth::user()->role;
+          $users=Auth::user();
+        ?>
+
+        @if(Auth::user()->id == 1)
+        <a href="/countries/create" class="btn btn-primary my-2">国作成</a>
         @endif
 
-        <a href="/register" class="btn btn-info my-2">一般登録</a>
-        
+        @if(!Auth::user()->id == 1 && $role == null)
+        <a href="/users/{{Auth::user()->id}}" class="btn btn-primary my-2">マイページ</a>
+        @endif
+
+        @foreach($countries as $country)
+        @foreach($country->companies as $company )
+        @if(Auth::user() && $role == $company->id)
+        <a href="/companies/{{$company->id}}/admin" class="btn btn-primary my-2">マイページ</a>
+        @endif
+        @endforeach
+        @endforeach
+
+        @endif
         </p>
       <br>
       </div>
@@ -118,21 +137,21 @@
           @if($i == $colcount)
             <div class="col-md-4">
               <div class="card mb-3">
-                <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQyMGg1988pPi2NmtJ2zHBKx5ZMfvIzcaEotYBcpjJT4XNotYyBw" alt="Card image cap">
+                <img class="card-img-top" src="{{$country->cover_image}}" alt="Card image cap">
 
                 <a href="{{ url('countries/'.$country->id)}}">
                 <br>
                 <h4>{{$country->name}}</h4>
                 </a>
                   <div class="card-body">
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text">{{$country->description}}</p>
                   </div>
               </div>
             </div>
           @else
             <div class="col-md-4">
               <div class="card mb-3">
-                <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQyMGg1988pPi2NmtJ2zHBKx5ZMfvIzcaEotYBcpjJT4XNotYyBw" alt="Card image cap">
+                <img class="card-img-top" src="{{$country->cover_image}}" alt="Card image cap">
 
                 <a href="{{ url('countries/'.$country->id)}}">
                 <a href="/countries/{{$country->id}}">
@@ -140,7 +159,7 @@
                 <h4>{{$country->name}}</h4>
                 </a>
                   <div class="card-body">
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text">{{$country->description}}</p>
                   </div>
               </div>
           @endif

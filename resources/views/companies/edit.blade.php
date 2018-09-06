@@ -1,13 +1,19 @@
 @extends('layouts.app')
 
+
+   <?php
+      $role=Auth::user()->role;
+      $users=Auth::user();
+   ?>
+   
+@if($role == $company->id)
 @section('content')
 <h1>編集ページ</h1>
 <br>
 <br>
 <h3>《求人内容》</h3>
 
-{!! Form::open(['url'=>'/companies/{{$company->id}}}', 'method'=>'POST', 
-    'enctype'=> 'multipart/form-data']) !!}
+{!! Form::open(['url'=>'/companies/{{$company->id}}', 'method'=>'POST', 'enctype'=> 'multipart/form-data']) !!}
    <br>
     <div class="from-group">
       {{Form::file('cover_image')}}
@@ -23,8 +29,14 @@
    <br>
 
    <div class="Form-group">
-      {{Form::Label('description','業務内容')}}
+      {{Form::Label('description','業務要約')}}
       {{Form::textarea('description', $company->description, ['class'=>'form-control'])}}
+   </div>
+   <br>
+
+   <div class="Form-group">
+      {{Form::Label('job_content','業務内容')}}
+      {{Form::textarea('job_content','',['class'=>'form-control'])}}
    </div>
    <br>
 
@@ -119,5 +131,14 @@
 <br>
 {{Form::submit('submit',['class'=>'btn btn-primary'])}}
 {!! Form::close() !!}
+
+@else
+
+  <h3>申し訳ございません。<br>
+  こちらのページはご覧頂けません。</h3>
+
+@endif
+
+<a class="btn btn-success float-right" href="/companies/{{$company->id}}" style="margin-right: 10%">Back</a>
 
 @endsection
