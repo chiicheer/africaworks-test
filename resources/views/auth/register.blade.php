@@ -26,9 +26,9 @@
 
 <body>
 <header>
-      <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="navbar navbar-dark bg-dark shadow-sm" style="background-color: #303841">
         <div class="container d-flex justify-content-between">
-          <a href="/countries" class="navbar-brand d-flex align-items-center">
+          <a href="/countries" class="navbar-brand d-flex align-items-center" style="color: #FF5722">
             <strong>Africa Works</strong>
           </a>
         </div>
@@ -313,11 +313,11 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn">
                                     {{ __('登録する') }}
                                 </button>
                             </div>
-                            <a href="/countries" class="btn btn-success">戻る</a>
+                            <a href="/countries" class="btn">戻る</a>
                         </div>
                     </form>
                 </div>

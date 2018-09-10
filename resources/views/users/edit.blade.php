@@ -115,9 +115,15 @@
    </div>
    <br>
 
+   <div class="Form-group">
+      {{Form::Label('email','E-mail')}}
+      {{Form::text('email', $user->email, ['class'=>'form-control'])}}
+   </div>
+   <br>
+
    {{Form::hidden('_method', 'PUT')}}
    <br>
-   {{Form::submit('submit',['class'=>'btn btn-primary'])}}
+   {{Form::submit('編集する',['class'=>'btn'])}}
    {!! Form::close() !!}
 
 
@@ -128,7 +134,7 @@
 
 @endif
 
-<a class="btn btn-success float-right" href="/users/{{$user->id}}" style="margin-right: 10%">Back</a>
+<a class="btn" href="/users/{{$user->id}}">戻る</a>
 
 
 @endsection

@@ -15,7 +15,7 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('country_id');
+            $table->integer('country_id')->nullable;
             $table->string('cover_image1');
             $table->string('cover_image2');
             $table->string('cover_image3');

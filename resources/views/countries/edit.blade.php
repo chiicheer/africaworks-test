@@ -6,30 +6,30 @@
    <br>
    <h3>《内容》</h3>
 
-   {!! Form::open(['url'=>['/countries'], 'method'=>'POST', 'enctype'=> 'multipart/form-data']) !!}
+   {!! Form::open(['action'=>['CountriesController@update', $country->id], 'method'=>'POST', 'enctype'=> 'multipart/form-data']) !!}
       <br>
-      <div class="Form-group">
+      <div class="form-group">
          {{Form::Label('name','国名')}}
-         {{Form::text('name','',['class'=>'form-control'])}}
+         {{Form::text('name', $country->name, ['class'=>'form-control'])}}
       </div>
       <br>
 
-      <div class="from-group">
+      <!--<div class="from-group">
          {{Form::file('cover_image1')}}
-      </div>
+      </div>-->
       <br>
 
       <div class="Form-group">
          {{Form::Label('description','国要約')}}
-         {{Form::textarea('description','',['class'=>'form-control'])}}
+         {{Form::textarea('description', $country->description, ['class'=>'form-control'])}}
       </div>
       <br>
 
    {{Form::hidden('_method', 'PUT')}}
    <br>
-   {{Form::submit('submit',['class'=>'btn btn-primary'])}}
+   {{Form::submit('編集を完了',['class'=>'btn'])}}
    {!! Form::close() !!}
 
-   <a class="btn btn-success float-right" href="/countries/{{$country->id}}">Back</a>
+   <a class="btn" href="/countries/{{$country->id}}">戻る</a>
 
 @endsection

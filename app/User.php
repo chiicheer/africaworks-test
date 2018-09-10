@@ -28,7 +28,7 @@ class User extends Authenticatable
     ];
 
     public function companies(){
-        return $this->belongsToMany('App\Company', 'company__users');
+        return $this->belongsToMany('App\Company', 'company__users')->withTimestamps();
     }
 
 }

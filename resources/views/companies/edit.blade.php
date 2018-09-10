@@ -1,25 +1,30 @@
 @extends('layouts.app')
 
-
+@section('content')
    <?php
       $role=Auth::user()->role;
       $users=Auth::user();
    ?>
    
-@if($role == $company->id)
-@section('content')
+@if($role == $company->id || Auth::user()->id == 1)
 <h1>編集ページ</h1>
 <br>
 <br>
 <h3>《求人内容》</h3>
 
-{!! Form::open(['url'=>'/countries/{{$company->id}}', 'method'=>'POST', 'enctype'=> 'multipart/form-data']) !!}
+{!! Form::open(['action'=>['CompaniesController@update', $company->id], 'method'=>'POST', 'enctype'=> 'multipart/form-data']) !!}
    <br>
-    <div class="from-group">
+    <!--<div class="from-group">
       {{Form::file('cover_image')}}
       {{Form::file('cover_image')}}
       {{Form::file('cover_image')}}
    </div>
+   <br>
+
+   <div class="Form-group">
+      {{Form::Label('country_id','国種別　※こちらは変更しないで下さい！！！')}}
+      {{Form::text('country_id', $company->country_id, ['class'=>'form-control'])}}
+   </div>-->
    <br>
 
    <div class="Form-group">
@@ -36,7 +41,7 @@
 
    <div class="Form-group">
       {{Form::Label('job_content','業務内容')}}
-      {{Form::textarea('job_content','',['class'=>'form-control'])}}
+      {{Form::textarea('job_content', $company->job_content, ['class'=>'form-control'])}}
    </div>
    <br>
 
@@ -129,16 +134,15 @@
 
 {{Form::hidden('_method', 'PUT')}}
 <br>
-{{Form::submit('submit',['class'=>'btn btn-primary'])}}
+{{Form::submit('編集を完了',['class'=>'btn'])}}
 {!! Form::close() !!}
 
 @else
 
   <h3>申し訳ございません。<br>
   こちらのページはご覧頂けません。</h3>
-
 @endif
 
-<a class="btn btn-success float-right" href="/companies/{{$company->id}}" style="margin-right: 10%">Back</a>
+<a class="btn" href="/companies/{{$company->id}}">戻る</a>
 
 @endsection

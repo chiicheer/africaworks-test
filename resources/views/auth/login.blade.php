@@ -24,12 +24,12 @@
 </head>
 
 
-<body>
+<body style="background-color: #00ADB5">
 <header>
-      <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="navbar navbar-dark bg-dark shadow-sm" style="background-color: #303841">
         <div class="container d-flex justify-content-between">
           <a href="/countries" class="navbar-brand d-flex align-items-center">
-            <strong>Africa Works</strong>
+            <strong style="color: #FF5722">Africa Works</strong>
           </a>
         </div>
       </div>
@@ -41,9 +41,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('ログイン') }}</div>
+                <div class="card-header login-header">{{ __('ログイン') }}</div>
 
-                <div class="card-body">
+                <div class="card-body login-body">
+<br>
                     <form method="POST" action="{{ route('login') }}" aria-label="{{ __('ログイン') }}">
                         @csrf
 
@@ -89,7 +90,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn">
                                     {{ __('ログイン') }}
                                 </button>
 
@@ -102,7 +103,7 @@
                         <br>
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <a href="/countries" class="btn btn-success">Back</a>
+                                <a href="/countries" class="btn">戻る</a>
                             </div>
                         </div>
                     </form>

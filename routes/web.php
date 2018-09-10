@@ -14,12 +14,10 @@
 Route::resource("countries", "CountriesController");
 Route::resource("companies", "CompaniesController");
 Route::resource("users", "UsersController");
+Route::resource("company__users", "Company_UserController");
 Route::get("/companies/{id}/admin", "CompaniesController@admin");
 Route::get("/users/{id}/edit", "UsersController@edit");
-Route::post('/countries/store', 'CountriesController@store');
-Route::post('/companies/store', 'CompaniesController@store');
-//Route::post("/companies/{id}", "CompaniesController@store");
-//Route::get("/companies/{id}", "CompaniesController@show");
+Route::post('/companies/{id}/admin', 'Company_UserController@destroy');
 
 
 Auth::routes();

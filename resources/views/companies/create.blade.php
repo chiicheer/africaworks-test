@@ -128,7 +128,7 @@
       </div>
 
    <br>
-   {{Form::submit('submit',['class'=>'btn btn-primary'])}}
+   {{Form::submit('作成を完了',['class'=>'btn'])}}
    {!! Form::close() !!}
 
   @else
@@ -138,6 +138,6 @@
 
   @endif
 
-  <a class="btn btn-success float-right" href="/countries">Back</a>
+  <a class="btn" href="/countries">戻る</a>
 
 @endsection

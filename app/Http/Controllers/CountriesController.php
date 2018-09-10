@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Country;
 use App\Company;
 use App\User;
@@ -44,8 +45,6 @@ class CountriesController extends Controller
             'cover_image'=>'image|nullable|max:1999',
             'description'=> 'required',
         ]);
-
-            //return $request->file('cover_image')->getClientOriginalName();
 
             $filenameWithExt= $request->file('cover_image')->getClientOriginalName();
 
@@ -102,35 +101,36 @@ class CountriesController extends Controller
     {
         $this-> validate($request,
             [
-                'title'=> 'required',
-                'cover_image'=>'image|max:1999',
-                'description'=> 'required',
+                'name'=>'required',
+                'description'=>'required',
                 
             ]);
 
-            //$request-> hasFile('cover_image1', 'cover_image2', 'cover_image3')){
+            //$request-> hasFile('cover_image')){
+            // if($request-> hasFile('cover_image')){
 
-            $filenameWithExt= $request-> file('cover_image')-> getClientOriginalName();
+            // $filenameWithExt= $request-> file('cover_image')-> getClientOriginalName();
 
-            $filename= pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // $filename= pathinfo($filenameWithExt, PATHINFO_FILENAME);
 
-            $extension= $request-> file('cover_image')->getClientOriginalExtension();
+            // $extension= $request-> file('cover_image')->getClientOriginalExtension();
 
-            $fileNameToStore= $filename. '_'. time(). '.'. $extension;
+            // $fileNameToStore= $filename. '_'. time(). '.'. $extension;
 
-            $path= $request-> file('cover_image')-> storeAs('public/photos', $fileNameToStore);
+            // $path= $request-> file('cover_image')-> storeAs('public/cover_images', $fileNameToStore);
 
-        $country=Country::find($id);
-        $country->name=$request->input('name');
-        $country->cover_image=$filenameToStore;
-        $country->description=$request->input('description');
+            // }
 
-        if($request-> hasFile('cover_image1', 'cover_image2', 'cover_image3')){
-            $country->cover_image= $fileNameToStore;
-        }
-        $country-> save();
+            $country=Country::find($id);
+            $country->name=$request->input('name');
+            $country->description=$request->input('description');
 
-        return redirect('countries.index')->with('success', '編集が完了しました');
+            // if($request-> hasFile('cover_image')){
+            //     $country->cover_image= $fileNameToStore;
+            // }
+            $country-> save();
+
+            return redirect('/countries')->with('success', '編集が完了しました');
     }
 
     /**
@@ -149,6 +149,6 @@ class CountriesController extends Controller
         
         $country->delete();
 
-        return redirect('countries.index')->with('success', '正常に削除されました');
+        return redirect('/countries')->with('success', '正常に削除されました');
     }
 }

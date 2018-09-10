@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;//←これが重要!
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Collection;
 use App\Company;
 use App\User;
 use App\Country;
@@ -49,7 +51,7 @@ class CompaniesController extends Controller
     {
         $this-> validate($request,
             [
-                'country_id'=> 'required',
+                'country_id'=> 'nullable',
                 'cover_image1'=> 'image|nullable|max:1999',
                 'cover_image2'=> 'image|nullable|max:1999',
                 'cover_image3'=> 'image|nullable|max:1999',
@@ -72,57 +74,54 @@ class CompaniesController extends Controller
                 'company_content'=> 'required',
             ]);
 
-        if($request-> hasFile('cover_image1', 'cover_image2', 'cover_image3')){
+            //return $request->file('cover_image')->getClientOriginalName();
 
-            $filenameWithExt= $request-> file('cover_image1', 'cover_image2', 'cover_image3')-> getClientOriginalName();
+            $filenameWithExt= $request->file('cover_image1')->getClientOriginalName();
+            $filenameWithExt= $request->file('cover_image2')->getClientOriginalName();
+            $filenameWithExt= $request->file('cover_image3')->getClientOriginalName();
 
-            $filename= pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $filename=pathinfo($filenameWithExt, PATHINFO_FILENAME);
 
-            $extension= $request-> file('cover_image1', 'cover_image2', 'cover_image3')-> getClientOriginalExtension();
-
-            $fileNameToStore= $filename. '_'. time(). '.'. $extension;
-
-            $path= $request-> file('cover_image1', 'cover_image2', 'cover_image3')-> storeAs('public/photos', $fileNameToStore);
-        }
-
-        else{
+            $extension=$request->file('cover_image1')->getClientOriginalExtension();
+            $extension=$request->file('cover_image2')->getClientOriginalExtension();
+            $extension=$request->file('cover_image3')->getClientOriginalExtension();
             
-            $fileNameToStore= 'noImage.jpg';
-        }
 
-        $company= new Company();
-        $company->country_id= $request->input('country_id');
-        $company->cover_image1= $fileNameToStore;
-        $company->cover_image2= $fileNameToStore;
-        $company->cover_image3= $fileNameToStore;
-        $company->title= $request-> input('title');
-        $company->description= $request-> input('description');
-        $company->job_content= $request-> input('job_content');
-        $company->place= $request-> input('place');
-        $company->relate= $request-> input('relate');
-        $company->role= $request-> input('role');
-        $company->salary= $request-> input('salary');
-        $company->welfare= $request-> input('welfare');
-        $company->time= $request-> input('time');
-        $company->skill= $request-> input('skill');
-        $company->apply_way= $request-> input('apply_way');
-        $company->company_name= $request-> input('company_name');
-        $company->company_place= $request-> input('company_place');
-        $company->foundation= $request-> input('foundation');
-        $company->employee= $request-> input('employee');
-        $company->company_type= $request-> input('company_type');
-        $company->company_content= $request-> input('company_content');
-        $company-> save();
-        return redirect('/countries/' . $company->country_id)->with('success', '正常に作成されました');
+            $fileNameToStore=$filename. '_'. time(). '.'. $extension;
 
+            $path=$request->file('cover_image1')->storeAs('public/photos1', $fileNameToStore);
+            $path=$request->file('cover_image2')->storeAs('public/photos2', $fileNameToStore);
+            $path=$request->file('cover_image3')->storeAs('public/photos3', $fileNameToStore);
 
-        $company=Company::findOrFail($request->input('company_id'));
-        $user=User::findOrFail(Auth::id());
-        $company->users()->attach($user->id);
-        return redirect('/companies/' . $company->id)->with('success', '応募が完了しました。    担当者からの連絡をお待ち下さい。');
+           
+            $company= new Company();
+            $company->country_id= $request->input('country_id');
+            $company->cover_image1= $fileNameToStore;
+            $company->cover_image2= $fileNameToStore;
+            $company->cover_image3= $fileNameToStore;
+            $company->title= $request-> input('title');
+            $company->description= $request-> input('description');
+            $company->job_content= $request-> input('job_content');
+            $company->place= $request-> input('place');
+            $company->relate= $request-> input('relate');
+            $company->role= $request-> input('role');
+            $company->salary= $request-> input('salary');
+            $company->welfare= $request-> input('welfare');
+            $company->time= $request-> input('time');
+            $company->skill= $request-> input('skill');
+            $company->apply_way= $request-> input('apply_way');
+            $company->company_name= $request-> input('company_name');
+            $company->company_place= $request-> input('company_place');
+            $company->foundation= $request-> input('foundation');
+            $company->employee= $request-> input('employee');
+            $company->company_type= $request-> input('company_type');
+            $company->company_content= $request-> input('company_content');
+            $company-> save();
 
+            return redirect('/countries/' . $company->country_id)->with('success', '正常に作成されました');
 
     }
+
 
     /**
      * Display the specified resource.
@@ -167,7 +166,7 @@ class CompaniesController extends Controller
     {
         $this-> validate($request,
             [
-                'country_id'=> 'required',
+                'country_id'=> 'nullable',
                 'title'=> 'required',
                 'description'=> 'required',
                 'job_content'=> 'required',
@@ -187,46 +186,56 @@ class CompaniesController extends Controller
                 'company_content'=> 'required',
             ]);
 
-        if($request-> hasFile('cover_image1', 'cover_image2', 'cover_image3')){
 
-            $filenameWithExt= $request-> file('cover_image1', 'cover_image2', 'cover_image3')-> getClientOriginalName();
+            // if($request-> hasFile('cover_image1, cover_image2, cover_image3')){
 
-            $filename= pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // $filenameWithExt= $request->file('cover_image1')->getClientOriginalName();
+            // $filenameWithExt= $request->file('cover_image2')->getClientOriginalName();
+            // $filenameWithExt= $request->file('cover_image3')->getClientOriginalName();
 
-            $extension= $request-> file('cover_image1', 'cover_image2', 'cover_image3')->getClientOriginalExtension();
+            // $filename= pathinfo($filenameWithExt, PATHINFO_FILENAME);
 
-            $fileNameToStore= $filename. '_'. time(). '.'. $extension;
+            // $extension= $request-> file('cover_image1')->getClientOriginalExtension();
+            // $extension= $request-> file('cover_image2')->getClientOriginalExtension();
+            // $extension= $request-> file('cover_image3')->getClientOriginalExtension();
 
-            $path= $request-> file('cover_image1', 'cover_image2', 'cover_image3')-> storeAs('public/photos', $fileNameToStore);
-        }
+            // $fileNameToStore= $filename. '_'. time(). '.'. $extension;
 
-        $company=Company::find($id);
-        $company->country_id= $request->input('country_id');
-        $company->title= $request-> input('title');
-        $company->description= $request-> input('description');
-        $company->job_content= $request-> input('job_content');
-        $company->place= $request-> input('place');
-        $company->relate= $request-> input('relate');
-        $company->role= $request-> input('role');
-        $company->salary= $request-> input('salary');
-        $company->welfare= $request-> input('welfare');
-        $company->time= $request-> input('time');
-        $company->skill= $request-> input('skill');
-        $company->apply_way= $request-> input('apply_way');
-        $company->company_name= $request-> input('company_name');
-        $company->company_place= $request-> input('company_place');
-        $company->foundation= $request-> input('foundation');
-        $company->employee= $request-> input('employee');
-        $company->company_type= $request-> input('company_type');
-        $company->company_content= $request-> input('company_content');
+            // $path= $request-> file('cover_image1')-> storeAs('public/photos1', $fileNameToStore);
+            // $path= $request-> file('cover_image2')-> storeAs('public/photos2', $fileNameToStore);
+            // $path= $request-> file('cover_image3')-> storeAs('public/photos3', $fileNameToStore);
 
-        if($request-> hasFile('cover_image1', 'cover_image2', 'cover_image3')){
-            $company->cover_image1= $fileNameToStore;
-            $company->cover_image2= $fileNameToStore;
-            $company->cover_image3= $fileNameToStore;
-        }
-        $company-> save();
-        return redirect('/companies/{{$company->id}}')->with('success', '編集が完了しました。　正しく反映されているか確認をして下さい。');
+            // }   
+            
+            $company=Company::find($id);
+            $company->country_id= $request->input('country_id');
+            $company->title= $request-> input('title');
+            $company->description= $request-> input('description');
+            $company->job_content= $request-> input('job_content');
+            $company->place= $request-> input('place');
+            $company->relate= $request-> input('relate');
+            $company->role= $request-> input('role');
+            $company->salary= $request-> input('salary');
+            $company->welfare= $request-> input('welfare');
+            $company->time= $request-> input('time');
+            $company->skill= $request-> input('skill');
+            $company->apply_way= $request-> input('apply_way');
+            $company->company_name= $request-> input('company_name');
+            $company->company_place= $request-> input('company_place');
+            $company->foundation= $request-> input('foundation');
+            $company->employee= $request-> input('employee');
+            $company->company_type= $request-> input('company_type');
+            $company->company_content= $request-> input('company_content');
+
+            // if($request-> hasFile('cover_image1, cover_image2, cover_image3')){
+            // $company->cover_image1= $fileNameToStore;
+            // $company->cover_image2= $fileNameToStore;
+            // $company->cover_image3= $fileNameToStore;
+
+            // }
+
+            $company-> save();
+            return redirect('/countries/' . $company->country_id)->with('success', '編集が完了しました。　正しく反映されているか確認をして下さい。');
     }
 
     /**
@@ -239,12 +248,14 @@ class CompaniesController extends Controller
     {
         $company=Company::find($id);
 
-        if(auth()-> user()-> role == $company->id){
-            Storage::delete('public/photos/'. $company-> cover_image1, cover_image2, cover_image3);
+        if(Auth::user()->role == $company->id || Auth::user()->id == 1){
+            Storage::delete('public/photos1'. $company->cover_image1);
+            Storage::delete('public/photos2'. $company->cover_image2);
+            Storage::delete('public/photos3'. $company->cover_image3);
         }
-        
+        $company->users()->detach();
         $company->delete();
 
-        return redirect('/countries/{{$company->country_id}}')->with('success', '御社の内容が正常に削除されました。　正しく反映されているか確認をして下さい。');
+        return redirect('/countries/' . $company->country_id)->with('success', '御社の内容が正常に削除されました。　正しく反映されているか確認をして下さい。');
     }
 }

@@ -23,7 +23,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-dark bg-dark navbar-expand-md shadow-sm navbar-laravel">
+        <nav class="navbar navbar-expand-md shadow-sm navbar-laravel" style="background-color: #303841">
             <div class="container d-flex justify-content-between">
                 <a href="/countries" class="navbar-brand d-flex align-items-center">
                 <strong>Africa Works</strong>
@@ -78,22 +78,19 @@
 
   <main role="main">
 
-    <section class="jumbotron text-center">
+    <section class="jumbotron text-center middle">
       <div class="container">
-      <br>
-      <br>
-      <br>
+      @include('inc.messages')
+
         <h1 class="jumbotron-heading">Africa Works</h1>
       <br>
         <p class="lead text-muted">Let's go to Africa for discovering</p>
         <p>
-      <br>
-      <br>
 
         @if(!Auth::user())
-        <a href="/login" class="btn btn-primary my-2">ログイン</a>
+        <a href="/login" class="btn my-2">ログイン</a>
 
-        <a href="/register" class="btn btn-info my-2">会員登録</a>
+        <a href="/register" class="btn my-2">会員登録</a>
         @endif
 
         @if(Auth::user())
@@ -103,17 +100,18 @@
         ?>
 
         @if(Auth::user()->id == 1)
-        <a href="/countries/create" class="btn btn-primary my-2">国作成</a>
+        <a href="/countries/create" class="btn my-2">国作成</a>
+        <a class="btn" href="/companies/create">仕事作成</a>
         @endif
 
-        @if(!Auth::user()->id == 1 && $role == null)
-        <a href="/users/{{Auth::user()->id}}" class="btn btn-primary my-2">マイページ</a>
+        @if($role == null)
+        <a href="/users/{{Auth::user()->id}}" class="btn my-2">マイページ</a>
         @endif
 
         @foreach($countries as $country)
         @foreach($country->companies as $company )
         @if(Auth::user() && $role == $company->id)
-        <a href="/companies/{{$company->id}}/admin" class="btn btn-primary my-2">マイページ</a>
+        <a href="/companies/{{$company->id}}/admin" class="btn my-2">マイページ</a>
         @endif
         @endforeach
         @endforeach
@@ -136,8 +134,8 @@
           @foreach($countries as $country)
           @if($i == $colcount)
             <div class="col-md-4">
-              <div class="card mb-3">
-                <img class="card-img-top" src= "/storage/cover_images/{{$country->cover_image}}" alt="Card image cap">
+              <div class="card mb-3 country-box">
+                <img class="card-img-top" src= "/storage/cover_images/{{$country->cover_image}}" alt="Card image cap" height="227px" width="348px">
 
                 <a href="{{ url('countries/'.$country->id)}}">
                 <br>
@@ -150,8 +148,8 @@
             </div>
           @else
             <div class="col-md-4">
-              <div class="card mb-3">
-                <img class="card-img-top" src="/storage/cover_images/{{$country->cover_image}}" alt="Card image cap">
+              <div class="card mb-3 country-box">
+                <img class="card-img-top" src="/storage/cover_images/{{$country->cover_image}}" alt="Card image cap" height="227px" width="348px">
 
                 <a href="{{ url('countries/'.$country->id)}}">
                 <a href="/countries/{{$country->id}}">
@@ -182,9 +180,9 @@
 
     <footer class="text-muted">
       <div class="container">
-        <p class="float-right">
+        <!--<p class="float-right">
           <a href="#">Back to top</a>
-        </p>
+        </p>-->
         <p>Africa Works created by @chihiro</p>
       </div>
     </footer>
