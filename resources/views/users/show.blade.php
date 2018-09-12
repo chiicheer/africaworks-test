@@ -8,8 +8,11 @@
 
 @if(Auth::user() && $role == null)
 @section('content')
+<div class="user-apply-list">
 <h2>応募中の会社リスト</h2>
-    <div class="table-responsive">
+</div>
+
+    <div class="table-responsive user-apply" style="width: 97%">
     <table class="table table-striped">
         <tr>
         <th class="table-dark">会社名</th>
@@ -22,10 +25,12 @@
         @endforeach
     </table>
     </div>
-<br>
-<br>
-    
-<h1>　登録内容</h1>　
+
+
+<div class="user-info">
+<h1>登録内容</h1>　
+<div>
+
   <div class="container">
     <div class="table-responsive">
         <table class="table table-striped">
@@ -112,8 +117,9 @@
         </table>
     </div>
 
-<br>
+    <div class="user-b">
     <a class="btn" href="/countries">戻る</a>
+    </div>
     <!--<a class="btn" href="/users/{{Auth::user()->id}}/edit">編集</a>
 
     {!! Form::open(['action'=>['UsersController@destroy', $user->id], 'method'=>'POST']) !!}

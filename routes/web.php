@@ -17,7 +17,7 @@ Route::resource("users", "UsersController");
 Route::resource("company__users", "Company_UserController");
 Route::get("/companies/{id}/admin", "CompaniesController@admin");
 Route::get("/users/{id}/edit", "UsersController@edit");
-Route::post('/companies/{id}/admin', 'Company_UserController@destroy');
+Route::delete('/companies/{id}/admin', 'Company_UserController@destroy');
 
 
 Auth::routes();

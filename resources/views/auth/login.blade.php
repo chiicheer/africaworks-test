@@ -26,7 +26,7 @@
 
 <body style="background-color: #00ADB5">
 <header>
-      <div class="navbar navbar-dark bg-dark shadow-sm" style="background-color: #303841">
+      <div class="navbar shadow-sm" style="background-color: #303841">
         <div class="container d-flex justify-content-between">
           <a href="/countries" class="navbar-brand d-flex align-items-center">
             <strong style="color: #FF5722">Africa Works</strong>
@@ -40,14 +40,14 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card login-box">
                 <div class="card-header login-header">{{ __('ログイン') }}</div>
 
                 <div class="card-body login-body">
-<br>
                     <form method="POST" action="{{ route('login') }}" aria-label="{{ __('ログイン') }}">
                         @csrf
 
+                      <div class="login-form">
                         <div class="form-group row">
                             <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
@@ -75,6 +75,7 @@
                                 @endif
                             </div>
                         </div>
+                      </div>
 
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
@@ -88,24 +89,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn">
-                                    {{ __('ログイン') }}
-                                </button>
+                          <div class="button-grp">
+                            <button type="submit" class="btn login-b">{{ __('ログイン') }}</button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('パスワードを忘れましたか?') }}
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <br>
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <a href="/countries" class="btn">戻る</a>
-                            </div>
-                        </div>
+                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                                {{ __('パスワードを忘れましたか?') }}
+                            </a>
+
+                            <a href="/countries" class="btn login-back">戻る</a>
+                          </div>
                     </form>
                 </div>
             </div>

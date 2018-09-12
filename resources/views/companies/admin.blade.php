@@ -9,10 +9,12 @@
 @if($role == $company->id || Auth::user()->id == 1)
 @section('content')
 
-<div class="container">
-<br>
-<h2>御社に応募している登録者情報</h2>
 
+<div class="admin-title">
+<h2>御社に応募している登録者情報</h2>
+</div>
+
+<div class="container">
   @foreach($company->users as $user)
   <br>
       <table class="table table-striped">
@@ -95,14 +97,12 @@
           <th class="table-dark">{{ __('期間') }}</th>
           <td>{{ $user->period2 }}</td>
         </tr>
-<br>
-<br>
-        
-        {!!Form::open(['route' => ['company__users.destroy', $company->id]]) !!}
 
+        {!!Form::open(['route' => ['company__users.destroy', $company->id]]) !!}
+        <div class="com-form"> 
         {{ Form::submit('消去', ['class'=>'btn']) }}
         {!! Form::close() !!}
-
+        </div>
 
       @endforeach
 
@@ -118,6 +118,9 @@
 
 @endif
 
-<a class="btn" href="/countries">戻る</a>
+<div class="com-admin">
+  <a class="btn" href="/countries">戻る</a>
+</div>
+
 </div>
 @endsection

@@ -19,10 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('name_call');
             $table->string('gender');
             $table->string('tel')->unique();
-            $table->string('birthday');
-            $table->string('university_name');
-            $table->string('university_degree');
-            $table->string('university_date');
+            $table->string('birthday')->nullable;
+            $table->string('university_name')->nullable;
+            $table->string('university_degree')->nullable;
+            $table->string('university_date')->nullable;
             $table->string('master_university')->nullable;
             $table->string('master_degree')->nullable;
             $table->string('master_date')->nullable;

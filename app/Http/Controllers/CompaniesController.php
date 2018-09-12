@@ -187,7 +187,7 @@ class CompaniesController extends Controller
             ]);
 
 
-            // if($request-> hasFile('cover_image1, cover_image2, cover_image3')){
+            // if($request-> hasFile('cover_image1')){
 
             // $filenameWithExt= $request->file('cover_image1')->getClientOriginalName();
             // $filenameWithExt= $request->file('cover_image2')->getClientOriginalName();
@@ -227,7 +227,7 @@ class CompaniesController extends Controller
             $company->company_type= $request-> input('company_type');
             $company->company_content= $request-> input('company_content');
 
-            // if($request-> hasFile('cover_image1, cover_image2, cover_image3')){
+            // if($request-> hasFile('cover_image1')){
             // $company->cover_image1= $fileNameToStore;
             // $company->cover_image2= $fileNameToStore;
             // $company->cover_image3= $fileNameToStore;
@@ -235,7 +235,7 @@ class CompaniesController extends Controller
             // }
 
             $company-> save();
-            return redirect('/countries/' . $company->country_id)->with('success', '編集が完了しました。　正しく反映されているか確認をして下さい。');
+            return redirect('/countries/' . $company->country_id)->with('success', 'hello編集が完了しました。　正しく反映されているか確認をして下さい。');
     }
 
     /**

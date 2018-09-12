@@ -16,11 +16,12 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('country_id')->nullable;
-            $table->string('cover_image1');
-            $table->string('cover_image2');
-            $table->string('cover_image3');
+            $table->string('cover_image1')->nullable;
+            $table->string('cover_image2')->nullable;
+            $table->string('cover_image3')->nullable;
             $table->string('title');
             $table->text('description');
+            $table->text('point');
             $table->text('job_content');
             $table->string('place');
             $table->string('relate');

@@ -24,9 +24,9 @@
 </head>
 
 
-<body>
+<body style="background-color: #00ADB5">
 <header>
-      <div class="navbar navbar-dark bg-dark shadow-sm" style="background-color: #303841">
+      <div class="navbar shadow-sm" style="background-color: #303841">
         <div class="container d-flex justify-content-between">
           <a href="/countries" class="navbar-brand d-flex align-items-center" style="color: #FF5722">
             <strong>Africa Works</strong>
@@ -42,17 +42,16 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('会員登録　　！※の付いている項目は必ず記入して下さい！') }}</div>
+            <div class="card register-box">
+                <div class="card-header register-header">{{ __('会員登録')}} <span>{{__('　　　※')}}</span> {{__('の付いている項目は必ず記入して下さい')}}</div>
 
-                <div class="card-body">
+                <div class="card-body register-body">
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                         @csrf
 
-
-                        <br>
+                    <div class="self">
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('氏名　※') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('氏名')}} <span>{{__('　※') }}</span></label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="阿弗利加　太郎" required autofocus>
@@ -66,7 +65,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="name_call" class="col-md-4 col-form-label text-md-right">{{ __('フリガナ　※') }}</label>
+                            <label for="name_call" class="col-md-4 col-form-label text-md-right">{{ __('フリガナ')}} <span>{{__('　※') }}</span></label>
 
                             <div class="col-md-6">
                                 <input id="name_call" type="text" class="form-control{{ $errors->has('name_call') ? ' is-invalid' : '' }}" name="name_call" value="{{ old('name_call') }}" placeholder="アフリカ　タロウ" required autofocus>
@@ -80,7 +79,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('性別　※') }}</label>
+                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('性別')}} <span>{{__('　※') }}</span></label>
 
                             <div class="col-md-6">
                             <select  id="gender" type="integer" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" name="gender" required><option value="">選択して下さい</option>
@@ -96,7 +95,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="tel" class="col-md-4 col-form-label text-md-right">{{ __('電話番号　※') }}<br>{{ __('(半角数字・ハイフン有り)') }}</label>
+                            <label for="tel" class="col-md-4 col-form-label text-md-right">{{ __('電話番号')}} <span>{{__('　※') }}</span><br>{{ __('(半角数字・ハイフン有り)') }}</label>
 
                             <div class="col-md-6">
                                 <input id="tel" type="integer" class="form-control{{ $errors->has('tel') ? ' is-invalid' : '' }}" name="tel" value="{{ old('tel') }}" placeholder="000-0000-0000" required>
@@ -110,7 +109,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('生年月日　※') }}</label>
+                            <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('生年月日')}} <span>{{__('　※') }}</span></label>
                             
                             <div class="col-md-6">
                                 <input id="birthday" type="date" class="form-control{{ $errors->has('birthday') ? ' is-invalid' : '' }}" name="birthday" value="{{ old('birthday') }}" required>
@@ -122,14 +121,15 @@
                                 @endif
                             </div>
                         </div>
+                    </div>
                         
-                        <br>
+                    <div class="career">
                         <div class="text-center">
                             <h3>《学歴》</h3>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="university_name" class="col-md-4 col-form-label text-md-right">{{ __('大学名　※') }}</label>
+                            <label for="university_name" class="col-md-4 col-form-label text-md-right">{{ __('大学名')}} <span>{{__('　※') }}</span></label>
 
                             <div class="col-md-6">
                                 <input id="university_name" type="text" class="form-control{{ $errors->has('university_name') ? ' is-invalid' : '' }}" name="university_name" value="{{ old('university_name') }}" placeholder="アフリカ大学" required>
@@ -143,7 +143,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="university_degree" class="col-md-4 col-form-label text-md-right">{{ __('学部・コース名　※') }}</label>
+                            <label for="university_degree" class="col-md-4 col-form-label text-md-right">{{ __('学部・コース名')}} <span>{{__('　※') }}</span></label>
 
                             <div class="col-md-6">
                                 <input id="university_degree" type="text" class="form-control{{ $errors->has('university_degree') ? ' is-invalid' : '' }}" name="university_degree" value="{{ old('university_degree') }}" placeholder="国際関係学部　アフリカ地域専攻" required>
@@ -157,7 +157,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="university_date" class="col-md-4 col-form-label text-md-right">{{ __('　※') }}</label>
+                            <label for="university_date" class="col-md-4 col-form-label text-md-right">{{ __('')}} <span>{{__('　※') }}</span></label>
 
                             <div class="col-md-6">
                                 <select id="university_date" class="form-control{{ $errors->has('university_date') ? ' is-invalid' : '' }}" name="university_date"><option value="">選択して下さい</option>
@@ -199,8 +199,9 @@
                             <option value="中退">中退</option></select>
                             </div>
                         </div>
+                    </div>
 
-                        <br>
+                    <div class="job-career">
                         <div class="text-center">
                             <h3>《職歴》</h3>
                         </div>
@@ -273,9 +274,11 @@
                             <option value="10年以上">10年以上</option></select>
                             </div>
                         </div>
+                    </div>
 
+                    <div class="key">
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail　※') }}<br>{{ __('(半角英数字)') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail')}} <span>{{__('　※') }}</span><br>{{ __('(半角英数字)') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="a1b2c3d4f5g@africa.jp" required>
@@ -290,7 +293,7 @@
 
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('パスワード　※') }}<br>{{ __('(半角英数字6字以上)') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('パスワード')}} <span>{{__('　※') }}</span><br>{{ __('(半角英数字6字以上)') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -304,21 +307,17 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('パスワードの再確認　※') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('パスワードの再確認')}} <span>{{__('　※') }}</span></label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn">
-                                    {{ __('登録する') }}
-                                </button>
-                            </div>
-                            <a href="/countries" class="btn">戻る</a>
-                        </div>
+                            <button type="submit" class="btn r-btn"><span>{{ __('登録する') }}</span></button>
+                            <a href="/countries" class="btn register-back">戻る</a>
+
                     </form>
                 </div>
             </div>

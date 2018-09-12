@@ -2,15 +2,10 @@
 
 @section('content')
 
-  <div class="container space-2 space-3-top--lg">
+  <div class="explanation">
     <h1>{!! $country-> name!!}</h1>
-    <p class="lead">{{$country->description}}</p>
-    <br>
-    <br>
-    <p>求人一覧</p>
-
-
-
+    <p>{{$country->description}}</p>
+  </div>
 
   @if(count($country->companies)>0)
       
@@ -19,12 +14,13 @@
       $i = 1;
     ?>
 
+  <div class="container space-2 space-3-top--lg">
       <div class="container">
         <div class="row text-center">
         @foreach($country->companies as $company )
         @if($i == $colcount)
           <div class="col-md-4">
-            <div class="card mb-3 shadow-sm" style="width: 18rem;">
+            <div class="card mb-3 shadow-sm com-box" style="width: 18rem;">
                 <img class="card-img-top" src="/storage/photos1/{{$company->cover_image1}}" alt="Card image cap" height="186px">
 
                 <div class="card-body">
@@ -42,7 +38,7 @@
           </div>
         @else
           <div class="col-md-4">
-            <div class="card mb-3 shadow-sm" style="width: 18rem;">
+            <div class="card mb-3 shadow-sm com-box" style="width: 18rem;">
               <img class="card-img-top" src="/storage/photos1/{{$company->cover_image1}}" alt="Card image cap" height="186px">
 
               <div class="card-body">
@@ -76,18 +72,23 @@
   @endif
 <br>
 
+
+    <div class="cnt-show">
+    <a class="btn" href="/countries">戻る</a>
+    
   @if(Auth::user())
     @if(Auth::user()->id == 1)
     <a class="btn" href="/countries/{{$country->id}}/edit">編集</a>
 
     {!! Form::open(['action'=>['CountriesController@destroy', $country->id], 'method'=>'POST']) !!}
     {{ Form::hidden('_method', 'DELETE') }}
+    <div class="delete">
     {{ Form::submit('消去', ['class'=>'btn']) }}
+    </div>
     {!! Form::close() !!}
     @endif
   @endif
 
-<a class="btn" href="/countries">戻る</a>
-<br>
+</div>
 </div>
 @endsection

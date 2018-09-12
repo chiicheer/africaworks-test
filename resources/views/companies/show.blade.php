@@ -2,16 +2,17 @@
 
 @section('content')
 
+<div class="company">
 <div class="container">
-<br>
+	<div class="com-title">
         <h1>{{$company->title}}</h1>
+    </div>
 
-<br>
-        <div class="alert alert-warning" role="alert">
-  		  <h5>POINT!!<br>{{$company->description}}</h5>
-		</div>
+        <div class="point">
+          <span class="point-title">POINT</span>
+  		  <h5>{{$company->point}}</h5>
+  		</div>
 
-<br>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
 			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -21,27 +22,30 @@
 
   		  <div class="carousel-inner">
 		    <div class="carousel-item active">
-		      <img class="d-block" src="/storage/photos1/{{$company->cover_image1}}" alt="First slide" height="400px" width="800px">
+		      <img class="d-block" src="/storage/photos1/{{$company->cover_image1}}" alt="First slide" height="400px" width="70%">
 		    </div>
 		    <div class="carousel-item">
-		      <img class="d-block" src="/storage/photos2/{{$company->cover_image2}}" alt="Second slide" height="400px" width="800px">
+		      <img class="d-block" src="/storage/photos2/{{$company->cover_image2}}" alt="Second slide" height="400px" width="70%">
 		    </div>
 		    <div class="carousel-item">
-		      <img class="d-block" src="/storage/photos3/{{$company->cover_image3}}" alt="Third slide" height="400px" width="800px">
+		      <img class="d-block" src="/storage/photos3/{{$company->cover_image3}}" alt="Third slide" height="400px" width="70%">
 		    </div>
 		  </div>
 		</div>
+</div>
 
-<br>
-		<h3>業務内容</h3>
-        {{$company->job_content}}
+		<div class="sub-title">
+		  <h3>　業務内容</h3>
+		</div>
+          <p>{{$company->job_content}}</p>
 
-<br>
-		<h3>基本情報</h3>
-	 	<div class="table-responsive">
+        <div class="sub-title">
+		  <h3>　基本情報</h3>
+		</div>
+	 	<div class="table-responsive com-table" style="width: 70%">
       	  <table class="table table-striped">
 	    	<tr>
-		      <th class="table-dark" width="20%">勤務地</th>
+		      <th class="table-dark" width="30%">勤務地</th>
 		      <td>{{$company->place}}</td>
 	    	</tr>
 
@@ -72,16 +76,18 @@
 		  </table>
 	    </div>
 
-<br>
-		<h3>求める人材</h3>
-		{{$company->skill}}
+	    <div class="sub-title">
+		  <h3>　求める人材</h3>
+		</div>
+		  <p>{{$company->skill}}</p>
 
-<br>
-		<h3>企業情報</h3>
-		<div class="table-responsive">
+		<div class="sub-title">
+		  <h3>　企業情報</h3>
+		</div>
+		<div class="table-responsive com-table" style="width: 70%">
       	  <table class="table table-striped">
 	    	<tr>
-		      <th class="table-dark" width="20%">企業名</th>
+		      <th class="table-dark" width="30%">企業名</th>
 		      <td>{{$company->company_name}}</td>
 	    	</tr>
 
@@ -112,14 +118,15 @@
 		  </table>
 	    </div>
 
-<br>
-		<h3>応募の流れ</h3>
-		{{$company->apply_way}}
-
-<br>
-
+	    <div class="sub-title">
+		  <h3>　応募の流れ</h3>
+		</div>
+		  <p>{{$company->apply_way}}</p>
 
 
+
+	<div class="com-show">
+	<a class="btn " href="/countries/{{$company->country_id}}">戻る</a>
 
 @if(Auth::user())
 
@@ -129,13 +136,20 @@
 	?>
 
 	@if($role == $company->id || Auth::user()->id == 1)
+
+
+	
+
 	<a class="btn" href="/companies/{{$company->id}}/edit">編集</a>
 
+	@if(Auth::user()->id == 1)
 	{!! Form::open(['action'=>['CompaniesController@destroy', $company->id], 'method'=>'POST']) !!}
 	{{ Form::hidden('_method', 'DELETE') }}
     {{ Form::submit('消去', ['class'=>'btn']) }}
     {!! Form::close() !!}
+    @endif
 	@endif
+	</div>
 
 	@if($role == null)
 
@@ -143,21 +157,19 @@
 
 	{{ csrf_field() }}
 
-
+	<div class="com-apply">
 	{{Form::hidden('company_id', $company->id)}}
 	{{Form::hidden('user_id', 'Auth::user()->id')}}
 
 	{{Form::submit('この案件に応募する',['class'=>'btn'])}}
 
 	{!! Form::close() !!}
+	</div>
 	@endif
 
 @endif
 
-<a class="btn" href="/countries/{{$company->country_id}}">戻る</a>
 
-	</div>
-
-
+</div>
 @endsection
 
