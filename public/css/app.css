@@ -10514,6 +10514,12 @@ body {
   color: #F8F5F4;
 }
 
+.login-b:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #00ADB5;
+}
+
 .register-b {
   border-color: #303841;
   background-color: #303841;
@@ -10522,12 +10528,24 @@ body {
   color: #F8F5F4;
 }
 
+.register-b:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #00ADB5;
+}
+
 .top-b {
   border-color: #303841;
   background-color: #303841;
   padding: 1% 1%;
   margin-left: 2%;
   color: #F8F5F4;
+}
+
+.top-b:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #00ADB5;
 }
 
 .country-box {
@@ -10556,11 +10574,23 @@ body {
   margin-left: 35%;
 }
 
+.forget a {
+  color: #303841;
+  float: left;
+}
+
 .login-bt {
   width: 10%;
   border-color: #303841;
   background-color: #303841;
   color: #F8F5F4;
+  float: left;
+}
+
+.login-bt:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #00ADB5;
 }
 
 .login-back {
@@ -10568,6 +10598,13 @@ body {
   background-color: #303841;
   color: #F8F5F4;
   padding: 1% 3%;
+  margin-left: 20%;
+}
+
+.login-back:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #00ADB5;
 }
 
 .register-box {
@@ -10610,6 +10647,13 @@ span {
   padding: 1% 8%;
   margin-top: 6%;
   margin-left: 35%;
+  margin-bottom: 10%;
+}
+
+.r-btn:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  color: #FF5722;
 }
 
 .register-back {
@@ -10619,6 +10663,26 @@ span {
   padding: 1% 3%;
   float: right;
   margin-top: 6%;
+}
+
+.register-back:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #00ADB5;
+}
+
+.career h3 {
+  width: 30%;
+  border-bottom: solid 3px #00ADB5;
+  padding: 1% 0%;
+  margin: 3% 0% 5% 5%;
+}
+
+.job-career h3 {
+  width: 30%;
+  border-bottom: solid 3px #00ADB5;
+  padding: 1% 0%;
+  margin: 3% 0% 5% 5%;
 }
 
 .cn-name {
@@ -10679,16 +10743,42 @@ span {
   color: #F8F5F4;
 }
 
+.cot-b:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #00ADB5;
+}
+
 .cnt-show {
   margin: 0 auto;
 }
 
-.cnt-show a {
+.back a {
   border-color: #303841;
   background-color: #303841;
   color: #F8F5F4;
   float: left;
   margin: 5% 0% 5% 3%;
+}
+
+.back a:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #00ADB5;
+}
+
+.edit a {
+  border-color: #303841;
+  background-color: #303841;
+  color: #F8F5F4;
+  float: left;
+  margin: 5% 0% 5% 3%;
+}
+
+.edit a:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #FF5722;
 }
 
 .delete input {
@@ -10697,6 +10787,14 @@ span {
   color: #F8F5F4;
   float: left;
   margin: 5% 0% 5% 3%;
+}
+
+.delete input:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  background-color: #FF5722;
+  border-color: #FF5722;
+  color: #303841;
 }
 
 .cnt-create-title {
@@ -10726,12 +10824,24 @@ span {
   margin: 5% 0% 5% 3%;
 }
 
+.cnt-create input:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  color: #FF5722;
+}
+
 .cnt-create a {
   border-color: #303841;
   background-color: #303841;
   color: #F8F5F4;
   float: left;
   margin: 5% 0% 5% 3%;
+}
+
+.cnt-create a:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #00ADB5;
 }
 
 .cnt-edit-title {
@@ -10757,12 +10867,24 @@ span {
   margin: 5% 0% 5% 3%;
 }
 
+.cnt-edit-btn input:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #FF5722;
+}
+
 .cnt-edit-btn a {
   border-color: #303841;
   background-color: #303841;
   color: #F8F5F4;
   float: left;
   margin: 5% 0% 5% 3%;
+}
+
+.cnt-edit-btn a:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #00ADB5;
 }
 
 .create {
@@ -10802,12 +10924,24 @@ span {
   margin: 5% 0% 5% 3%;
 }
 
+.com-create input:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  color: #FF5722;
+}
+
 .com-create a {
   border-color: #303841;
   background-color: #303841;
   color: #F8F5F4;
   float: left;
   margin: 5% 0% 5% 3%;
+}
+
+.com-create a:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #00ADB5;
 }
 
 .admin-title {
@@ -10824,9 +10958,17 @@ span {
 .com-form input {
   border-color: #303841;
   background-color: #303841;
-  color: #FF5722;
+  color: #F8F5F4;
   float: left;
   margin: 5% 0% 2% 3%;
+}
+
+.com-form input:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  color: #303841;
+  background-color: #FF5722;
+  border-color: #FF5722;
 }
 
 .com-admin a {
@@ -10835,6 +10977,12 @@ span {
   color: #F8F5F4;
   float: left;
   margin: 5% 0% 5% 3%;
+}
+
+.com-admin a:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #00ADB5;
 }
 
 .user-apply-list {
@@ -10865,6 +11013,12 @@ span {
   background-color: #303841;
   color: #F8F5F4;
   margin: 5% 0% 5% 3%;
+}
+
+.user-b a:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #00ADB5;
 }
 
 .com-title {
@@ -10935,12 +11089,24 @@ span {
   margin: 5% 0% 5% 3%;
 }
 
+.com-show a:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #00ADB5;
+}
+
 .com-show input {
   border-color: #303841;
   background-color: #303841;
-  color: #FF5722;
+  color: #F8F5F4;
   float: left;
   margin: 5% 0% 5% 3%;
+}
+
+.com-show input:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  color: #FF5722;
 }
 
 .com-apply input {
@@ -10949,6 +11115,14 @@ span {
   color: #FF5722;
   float: left;
   margin: 5% 0% 5% 3%;
+}
+
+.com-apply input:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  color: #303841;
+  background-color: #FF5722;
+  border-color: #FF5722;
 }
 
 .edit-title {

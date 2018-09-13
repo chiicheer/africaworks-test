@@ -124,9 +124,7 @@
                     </div>
                         
                     <div class="career">
-                        <div class="text-center">
-                            <h3>《学歴》</h3>
-                        </div>
+                            <h3>学歴</h3>
                         
                         <div class="form-group row">
                             <label for="university_name" class="col-md-4 col-form-label text-md-right">{{ __('大学名')}} <span>{{__('　※') }}</span></label>
@@ -202,9 +200,7 @@
                     </div>
 
                     <div class="job-career">
-                        <div class="text-center">
-                            <h3>《職歴》</h3>
-                        </div>
+                            <h3>職歴</h3>
 
                         <div class="form-group row">
                             <label for="company_name" class="col-md-4 col-form-label text-md-right">{{ __('その１　会社名') }}</label>
@@ -315,7 +311,7 @@
                         </div>
                     </div>
 
-                            <button type="submit" class="btn r-btn"><span>{{ __('登録する') }}</span></button>
+                            <button type="submit" class="btn r-btn">{{ __('登録する') }}</button>
                             <a href="/countries" class="btn register-back">戻る</a>
 
                     </form>

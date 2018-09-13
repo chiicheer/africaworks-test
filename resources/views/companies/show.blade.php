@@ -127,7 +127,7 @@
 
 	<div class="com-show">
 	<a class="btn " href="/countries/{{$company->country_id}}">戻る</a>
-
+	</div>
 @if(Auth::user())
 
 	<?php
@@ -142,6 +142,7 @@
 
 	<a class="btn" href="/companies/{{$company->id}}/edit">編集</a>
 
+	<div class="com-show">
 	@if(Auth::user()->id == 1)
 	{!! Form::open(['action'=>['CompaniesController@destroy', $company->id], 'method'=>'POST']) !!}
 	{{ Form::hidden('_method', 'DELETE') }}
@@ -150,6 +151,7 @@
     @endif
 	@endif
 	</div>
+
 
 	@if($role == null)
 

@@ -74,11 +74,15 @@
 
 
     <div class="cnt-show">
-    <a class="btn" href="/countries">戻る</a>
+      <div class="back">
+      <a class="btn" href="/countries">戻る</a>
+      </div>
     
   @if(Auth::user())
     @if(Auth::user()->id == 1)
+    <div class="edit">
     <a class="btn" href="/countries/{{$country->id}}/edit">編集</a>
+    </div>
 
     {!! Form::open(['action'=>['CountriesController@destroy', $country->id], 'method'=>'POST']) !!}
     {{ Form::hidden('_method', 'DELETE') }}

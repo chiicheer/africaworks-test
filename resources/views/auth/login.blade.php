@@ -92,9 +92,11 @@
                           <div class="button-grp">
                             <button type="submit" class="btn login-b">{{ __('ログイン') }}</button>
 
+                            <div class="forget">
                             <a class="btn btn-link" href="{{ route('password.request') }}">
                                 {{ __('パスワードを忘れましたか?') }}
                             </a>
+                            </div>
 
                             <a href="/countries" class="btn login-back">戻る</a>
                           </div>
