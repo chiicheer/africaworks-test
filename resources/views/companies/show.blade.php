@@ -139,8 +139,9 @@
 
 
 	
-
+	<div class="com-show-edit">
 	<a class="btn" href="/companies/{{$company->id}}/edit">編集</a>
+	</div>
 
 	<div class="com-show">
 	@if(Auth::user()->id == 1)

@@ -10480,8 +10480,13 @@ a.text-dark:focus {
   background-color: #303841;
 }
 
-.navbar-brand {
+.navbar-brand strong {
   color: #FF5722;
+}
+
+.navbar-brand strong:hover {
+  color: #FF5722;
+  font-size: 19px;
 }
 
 body {
@@ -10551,6 +10556,11 @@ body {
 .country-box {
   border-color: #00ADB5;
   background-color: #F8F5F4;
+  border: solid 2px #303841;
+}
+
+.country-box img {
+  border-bottom: solid 1px #303841;
 }
 
 .login-box {
@@ -10687,6 +10697,16 @@ span {
 
 .cn-name {
   padding-top: 8%;
+  color: #FF5722;
+}
+
+.cn-name:hover {
+  color: #00ADB5;
+  font-size: 25px;
+}
+
+#app a:link {
+  text-decoration: none;
 }
 
 .home-box {
@@ -10729,8 +10749,12 @@ span {
 }
 
 .com-box {
-  border-color: #00ADB5;
   background-color: #F8F5F4;
+  border: solid 2px #303841;
+}
+
+.com-box img {
+  border-bottom: solid 1px #303841;
 }
 
 .com-box li {
@@ -10795,6 +10819,20 @@ span {
   background-color: #FF5722;
   border-color: #FF5722;
   color: #303841;
+}
+
+.card-title {
+  color: #FF5722;
+  margin-bottom: 7%;
+}
+
+.card-title:hover {
+  color: #00ADB5;
+  font-size: 20px;
+}
+
+.card-body a:link {
+  text-decoration: none;
 }
 
 .cnt-create-title {
@@ -11095,6 +11133,20 @@ span {
   color: #00ADB5;
 }
 
+.com-show-edit a {
+  border-color: #303841;
+  background-color: #303841;
+  color: #F8F5F4;
+  float: left;
+  margin: 5% 0% 5% 3%;
+}
+
+.com-show-edit a:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #FF5722;
+}
+
 .com-show input {
   border-color: #303841;
   background-color: #303841;
@@ -11106,7 +11158,9 @@ span {
 .com-show input:hover {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
-  color: #FF5722;
+  color: #303841;
+  background-color: #FF5722;
+  border-color: #FF5722;
 }
 
 .com-apply input {
@@ -11162,12 +11216,24 @@ span {
   margin: 5% 0% 5% 1%;
 }
 
+.com-edit input:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #FF5722;
+}
+
 .com-edit a {
   border-color: #303841;
   background-color: #303841;
   color: #F8F5F4;
   float: left;
   margin: 5% 0% 5% 3%;
+}
+
+.com-edit a:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #00ADB5;
 }
 
 .navbar-laravel {
