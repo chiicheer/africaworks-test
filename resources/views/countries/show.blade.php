@@ -3,7 +3,7 @@
 @section('content')
 
   <div class="explanation">
-    <h1>{!! $country-> name!!}</h1>
+    <h1>{!! $country->name !!}</h1>
     <p>{{$country->description}}</p>
   </div>
 

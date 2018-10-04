@@ -28,7 +28,7 @@
 <header>
       <div class="navbar shadow-sm" style="background-color: #303841">
         <div class="container d-flex justify-content-between">
-          <a href="/countries" class="navbar-brand d-flex align-items-center" style="color: #FF5722">
+          <a href="/" class="navbar-brand d-flex align-items-center" style="color: #FF5722">
             <strong>Africa Works</strong>
           </a>
         </div>
@@ -312,7 +312,7 @@
                     </div>
 
                             <button type="submit" class="btn r-btn">{{ __('登録する') }}</button>
-                            <a href="/countries" class="btn register-back">戻る</a>
+                            <a href="/" class="btn register-back">戻る</a>
 
                     </form>
                 </div>

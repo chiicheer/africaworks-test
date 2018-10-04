@@ -118,7 +118,7 @@ class CompaniesController extends Controller
             $company->company_content= $request-> input('company_content');
             $company-> save();
 
-            return redirect('/countries/' . $company->country_id)->with('success', '正常に作成されました');
+            return redirect('/' . $company->country_id)->with('success', '正常に作成されました');
 
     }
 
@@ -235,7 +235,7 @@ class CompaniesController extends Controller
             // }
 
             $company-> save();
-            return redirect('/countries/' . $company->country_id)->with('success', 'hello編集が完了しました。　正しく反映されているか確認をして下さい。');
+            return redirect('/' . $company->country_id)->with('success', 'hello編集が完了しました。　正しく反映されているか確認をして下さい。');
     }
 
     /**
@@ -256,6 +256,6 @@ class CompaniesController extends Controller
         $company->users()->detach();
         $company->delete();
 
-        return redirect('/countries/' . $company->country_id)->with('success', '御社の内容が正常に削除されました。　正しく反映されているか確認をして下さい。');
+        return redirect('/' . $company->country_id)->with('success', '御社の内容が正常に削除されました。　正しく反映されているか確認をして下さい。');
     }
 }

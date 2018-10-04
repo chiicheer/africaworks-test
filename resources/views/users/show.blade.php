@@ -118,7 +118,7 @@
     </div>
 
     <div class="user-b">
-    <a class="btn" href="/countries">戻る</a>
+    <a class="btn" href="/">戻る</a>
     </div>
     <!--<a class="btn" href="/users/{{Auth::user()->id}}/edit">編集</a>
 

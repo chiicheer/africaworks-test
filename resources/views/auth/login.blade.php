@@ -28,7 +28,7 @@
 <header>
       <div class="navbar shadow-sm" style="background-color: #303841">
         <div class="container d-flex justify-content-between">
-          <a href="/countries" class="navbar-brand d-flex align-items-center">
+          <a href="/" class="navbar-brand d-flex align-items-center">
             <strong style="color: #FF5722">Africa Works</strong>
           </a>
         </div>
@@ -98,7 +98,7 @@
                             </a>
                             </div>
 
-                            <a href="/countries" class="btn login-back">戻る</a>
+                            <a href="/" class="btn login-back">戻る</a>
                           </div>
                     </form>
                 </div>

@@ -147,6 +147,6 @@
 
   @endif
 
-  <a class="btn" href="/countries">戻る</a>
+  <a class="btn" href="/">戻る</a>
    </div>
 @endsection

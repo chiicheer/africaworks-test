@@ -63,7 +63,7 @@ class CountriesController extends Controller
             $country->cover_image=$fileNameToStore;
             $country->save();
 
-            return redirect('/countries')->with('success', '正常に作成されました');
+            return redirect('/')->with('success', '正常に作成されました');
     }
 
     /**
@@ -75,7 +75,7 @@ class CountriesController extends Controller
     public function show($id)
     {
         $country=Country::find($id);
-        return view('countries.show', ['country'=> $country]);
+        return view('countries.show')->with('country', $country);
     }
 
     /**
@@ -130,7 +130,7 @@ class CountriesController extends Controller
             // }
             $country-> save();
 
-            return redirect('/countries')->with('success', '編集が完了しました');
+            return redirect('/')->with('success', '編集が完了しました');
     }
 
     /**
@@ -149,6 +149,6 @@ class CountriesController extends Controller
         
         $country->delete();
 
-        return redirect('/countries')->with('success', '正常に削除されました');
+        return redirect('/')->with('success', '正常に削除されました');
     }
 }

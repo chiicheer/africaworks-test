@@ -6,7 +6,7 @@
    <h1>Country作成ページ</h1>
   </div>
 
-   {!! Form::open(['url'=>'/countries', 'method'=>'POST', 'enctype'=> 'multipart/form-data']) !!}
+   {!! Form::open(['url'=>'/', 'method'=>'POST', 'enctype'=> 'multipart/form-data']) !!}
 
       <div class="Form-group cnt-create-form">
          {{Form::Label('name','国名')}}
@@ -33,7 +33,7 @@
 
   @endif
   
-  <a class="btn" href="/countries">戻る</a>
+  <a class="btn" href="/">戻る</a>
   </div>
   
 @endsection

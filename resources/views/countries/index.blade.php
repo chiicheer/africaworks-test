@@ -25,7 +25,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md shadow-sm navbar-laravel" style="background-color: #303841">
             <div class="container d-flex justify-content-between">
-                <a href="/countries" class="navbar-brand d-flex align-items-center">
+                <a href="/" class="navbar-brand d-flex align-items-center">
                 <strong>Africa Works</strong>
                 </a>
 
@@ -141,7 +141,7 @@
               <div class="card mb-3 country-box">
                 <img class="card-img-top" src= "/storage/cover_images/{{$country->cover_image}}" alt="Card image cap" height="227px" width="348px">
 
-                <a href="{{ url('countries/'.$country->id)}}">
+                <a href="{{ url('/countries/'.$country->id)}}">
                 <h4 class="cn-name">{{$country->name}}</h4>
                 </a>
                   <div class="card-body">
@@ -154,8 +154,7 @@
               <div class="card mb-3 country-box">
                 <img class="card-img-top" src="/storage/cover_images/{{$country->cover_image}}" alt="Card image cap" height="227px" width="348px">
 
-                <a href="{{ url('countries/'.$country->id)}}">
-                <a href="/countries/{{$country->id}}">
+                <a href="{{ url('/countries/'.$country->id)}}">
                 <h4 class="cn-name">{{$country->name}}</h4>
                 </a>
                   <div class="card-body">

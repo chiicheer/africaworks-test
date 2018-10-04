@@ -25,7 +25,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md shadow-sm navbar-laravel" style="background-color: #303841">
             <div class="container d-flex justify-content-between">
-                <a href="/countries" class="navbar-brand d-flex align-items-center">
+                <a href="/" class="navbar-brand d-flex align-items-center">
                 <strong>Africa Works</strong>
                 </a>
 
